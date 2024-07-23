@@ -1,0 +1,17 @@
+.row80 {
+  display: flex;
+  height: 80%;
+
+  .col1 {
+    flex: 1;
+  }
+
+  .col10 {
+    flex: 10;
+  }
+}
+
+body { background-color: red; height: 100%;}
+html { background-color: green; height: 100%; }
+.body { background-color: red; height: 100%;}
+.html { background-color: green; height: 100%; }

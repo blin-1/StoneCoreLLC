@@ -1,0 +1,69 @@
+<p-table #dt 
+    [value]="violations" 
+    [(selection)]="selectedViolations" 
+    dataKey="id" 
+    [rows]="10" 
+    [showCurrentPageReport]="true" 
+    [rowsPerPageOptions]="[5,10,15,50]" 
+    [loading]="loading"
+    [paginator]="true" 
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    >
+    <ng-template pTemplate="caption">
+        <div class="table-header">
+            <!-- <span >
+                List of Violations {{' for ' + violations[0].house_number + ' ' + violations[0].street + ', ' + violations[0].boro}}                        
+            </span> -->
+        </div>
+    </ng-template>
+
+     <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="violation_number">Violation Number<p-sortIcon field="violation_number"></p-sortIcon></th>
+            <th pSortableColumn="violation_type">Violation Type<p-sortIcon field="violation_type"></p-sortIcon></th>
+            <th pSortableColumn="description">Description<p-sortIcon field="description"></p-sortIcon></th>
+            <th pSortableColumn="issue_date">Issue Date<p-sortIcon field="issue_date"></p-sortIcon></th>
+            <th pSortableColumn="disposition_date">Disposition Date<p-sortIcon field="disposition_date"></p-sortIcon></th>	
+            <th pSortableColumn="disposition_comments">Disposition Comments<p-sortIcon field="disposition_comments"></p-sortIcon></th>
+            <th style="width: 8rem"></th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-violation>
+        <tr class="p-selectable-row">
+            <td>
+                <span class="p-column-title">Violation Number</span>
+                <span class="image-text">{{violation.violation_number}}</span>
+            </td>
+            <td>
+                <span class="p-column-title">Violation Type</span>
+                <span class="image-text">{{violation.violation_type}}</span>
+            </td>
+            <td>
+                <span class="p-column-title">Issue Date</span>
+                <span class="image-text">{{violation.description}}</span>
+            </td>
+            <td>
+                <span class="p-column-title">Issue Date</span>
+                <span class="image-text">{{violation.issue_date}}</span>
+            </td>					
+            <td>
+                <span class="p-column-title">Disposition Date</span>
+                <span class="image-text">{{violation.disposition_date}}</span>
+            </td>
+            <td>
+                <span class="p-column-title">Disposition Comments</span>
+                <span class="image-text">{{violation.disposition_comments}}</span>
+            </td>
+            <td >
+                <button pButton type="button" class="p-button-secondary" icon="pi pi-paypal"></button>
+            </td>
+        </tr>
+    </ng-template>
+    
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="7">No violations found.</td>
+        </tr>
+    </ng-template>
+</p-table>

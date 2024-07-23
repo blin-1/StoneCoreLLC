@@ -1,0 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+
+ 
+@import '~@angular/material/theming';
+@import url('https://fonts.googleapis.com/css2?family=Montez:300,400,500&display=swap');
+@include mat-core();
+
+$custom-typography: mat-typography-config( 
+  $font-family: ('Montez', sans-serif)
+  //$headline: mat-typography-level(32px, 48px, 700), 
+  //$body-1: mat-typography-level(16px, 24px, 500) 
+
+);
+
+@include mat-base-typography($custom-typography);
+@include mat-core($custom-typography);
+
+// $primary:	mat-palette($mat-orange, 500);
+$primary:	mat-palette($mat-red, 500);
+$accent:	mat-palette($mat-yellow, A200, A100, A400);
+$warn: 		mat-palette($mat-pink, 400);
+$theme:		mat-dark-theme($primary,$accent,$warn);
+@include angular-material-theme($theme);
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { background-color: red; height: 100%;}
+html { background-color: green; height: 100%; }
+.body { background-color: red; height: 100%;}
+.html { background-color: green; height: 100%; }

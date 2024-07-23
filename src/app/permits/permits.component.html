@@ -1,0 +1,70 @@
+<p-table #dt 
+    [value]="permits" 
+    [(selection)]="selectedPermits" 
+    dataKey="id" 
+    [rows]="10" 
+    [showCurrentPageReport]="true" 
+    [rowsPerPageOptions]="[5,10,15,50]" 
+    [loading]="loading"
+    [paginator]="true" 
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    >
+    <ng-template  pTemplate="caption">
+        <div class="table-header">
+            <!-- <span>
+                 List of Permits {{' for ' + permits[0].house__ + ' ' + permits[0].street_name + ', ' + permits[0].borough}}                        
+            </span> -->
+        </div>
+    </ng-template>
+
+     <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="job_start_date">Job Start Date<p-sortIcon field="job_start_date"></p-sortIcon></th>
+            <th pSortableColumn="permittee_s_first_name">Permitee First Name<p-sortIcon field="permittee_s_first_name"></p-sortIcon></th>
+            <th pSortableColumn="permittee_s_last_name">Permitee Last Name<p-sortIcon field="permittee_s_last_name"></p-sortIcon></th>
+            <th pSortableColumn="permittee_s_business_name">Permitee Business Name<p-sortIcon field="permittee_s_business_name"></p-sortIcon></th>
+            <th pSortableColumn="permittee_s_license_type">Lic. Type<p-sortIcon field="permittee_s_license_type"></p-sortIcon></th>	
+            <th pSortableColumn="permittee_s_license__">Lic #<p-sortIcon field="permittee_s_license__"></p-sortIcon></th>
+            <th style="width: 8rem"></th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-permit>
+        <tr class="p-selectable-row">
+            <td>
+                <span class="p-column-title">Permit Job Start Date</span>
+                <span class="image-text">{{permit.job_start_date}}</span>
+            </td>
+            <td>
+                <span class="p-column-title">First Name</span>
+                <span class="image-text">{{permit.permittee_s_first_name}}</span>
+            </td>
+            <td>
+                <span class="p-column-title">Last Name</span>
+                <span class="image-text">{{permit.permittee_s_last_name}}</span>
+            </td>
+            <td>
+                <span class="p-column-title">Business Name</span>
+                <span class="image-text">{{permit.permittee_s_business_name}}</span>
+            </td>					
+            <td>
+                <span class="p-column-title">Lic. Type</span>
+                <span class="image-text">{{permit.permittee_s_license_type}}</span>
+            </td>
+            <td>
+                <span class="p-column-title">Lic. Number</span>
+                <span class="image-text">{{permit.permittee_s_license__}}</span>
+            </td>
+            <td >
+                <button pButton type="button" class="p-button-secondary" icon="pi pi-paypal"></button>
+            </td>
+        </tr>
+    </ng-template>
+    
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="7">No permits found.</td>
+        </tr>
+    </ng-template>
+</p-table>
+

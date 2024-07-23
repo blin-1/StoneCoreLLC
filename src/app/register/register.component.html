@@ -1,0 +1,94 @@
+<p-card [style]="{'text-align': 'center'}" styleClass="p-card-shadow">
+
+
+	<ng-template pTemplate="header">
+		{{header}}
+	</ng-template>
+
+
+	<div class="p-fluid p-grid">
+
+		<div class="p-field col-12 p-md-4" >
+			<span class="p-float-label">
+				<input type="text" 
+					id="firstname" 
+					pInputText
+					[disabled]='true'
+					[(ngModel)]='this.customerService.user.firstName' 
+					[style]="{'margin-bottom': '2em'}"
+				/>
+				<label for="firstname">First Name</label>
+			</span>
+		</div>
+
+		<div class="p-field p-col-12 p-md-4">
+			<span class="p-float-label">
+				<input type="text" 
+					id="lastname" 
+					pInputText 
+					[disabled]='true'
+					[(ngModel)]='this.customerService.user.lastName'
+					[style]="{'margin-bottom': '2em'}"
+				/>
+				<label for="lastname">Last Name</label>
+			</span>
+		</div>
+
+		<div class="p-field p-col-12 p-md-4">
+			<span class="p-float-label">
+				<input type="text" 
+					id="email" 
+					pInputText
+					[disabled]='true'
+					[(ngModel)]='this.customerService.user.email'
+					[style]="{'margin-bottom': '2em'}"
+				/>
+				<label for="email">Email</label>
+			</span>
+		</div>
+
+		<div class="p-field p-col-12 p-md-4">
+			<span class="p-float-label">
+				<input type="text" 
+					id="license" 
+					pInputText 
+					[(ngModel)]='this.customerService.user.license'
+					[style]="{'margin-bottom': '2em'}"
+				/>
+				<label for="license">Contractor License</label>
+			</span>
+		</div>
+
+	</div>
+
+
+	<ng-template pTemplate="footer">
+		<p-button *ngIf="!customerService.user.hasRegistered && customerService.user.isSignedIn"
+					label="Register with StoneCore" 
+					icon="pi pi-check"
+					(click)="register()"
+					[style]="{'margin': '.5em'}"
+					class="p-button-lg"
+		>
+		</p-button>
+
+		<p-button 	*ngIf="!customerService.user.isSignedIn" 
+					label="Sign in with Google" 
+					icon="pi pi-google" 
+					(click)="customerService.signIn()"
+					[style]="{'margin': '.5em'}"
+					class="p-button-lg"
+					
+		>
+		</p-button>	
+
+		<p-button 	*ngIf="customerService.user.isSignedIn" 
+					label="Not You?" 
+					icon="pi pi-google" 
+					(click)="customerService.signOut()" 
+					[style]="{'margin': '.5em'}"
+					class="p-button-lg"
+		>
+		</p-button>
+	</ng-template>
+</p-card>

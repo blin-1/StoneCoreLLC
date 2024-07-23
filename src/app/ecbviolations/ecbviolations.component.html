@@ -1,0 +1,91 @@
+<p-table
+  #dt
+  [value]="ecbViolations"
+  [(selection)]="selectedEcbViolations"
+  dataKey="id"
+  [rows]="10"
+  [showCurrentPageReport]="true"
+  [rowsPerPageOptions]="[5, 10, 15, 50]"
+  [loading]="loading"
+  [paginator]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+>
+  <ng-template pTemplate="caption">
+    <div class="table-header">
+      <!-- <span >
+                List of Violations {{' for ' + violations[0].house_number + ' ' + violations[0].street + ', ' + violations[0].boro}}                        
+            </span> -->
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="ecb_violation_number">
+        ECB Violation Number<p-sortIcon
+          field="ecb_violation_number"
+        ></p-sortIcon>
+      </th>
+      <th pSortableColumn="dob_violation_number">
+        DOB Violation Number<p-sortIcon
+          field="dob_violation_number"
+        ></p-sortIcon>
+      </th>
+      <th pSortableColumn="ecb_violation_status">
+        Status<p-sortIcon field="ecb_violation_status"></p-sortIcon>
+      </th>
+      <th pSortableColumn="issue_date">
+        Issue Date<p-sortIcon field="issue_date"></p-sortIcon>
+      </th>
+      <th pSortableColumn="violation_description">
+        Description<p-sortIcon field="violation_description"></p-sortIcon>
+      </th>
+      <th pSortableColumn="respondent_name">
+        Respondent Name<p-sortIcon field="respondent_name"></p-sortIcon>
+      </th>
+      <th style="width: 8rem"></th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-ecbViolation>
+    <tr class="p-selectable-row">
+      <td>
+        <span class="p-column-title">ECB Violation Number</span>
+        <span class="image-text">{{ ecbViolation.ecb_violation_number }}</span>
+      </td>
+      <td>
+        <span class="p-column-title">DOB Violation Number</span>
+        <span class="image-text">{{ ecbViolation.dob_violation_number }}</span>
+      </td>
+      <td>
+        <span class="p-column-title">Status</span>
+        <span class="image-text">{{ ecbViolation.ecb_violation_status }}</span>
+      </td>
+      <td>
+        <span class="p-column-title">Issue Date</span>
+        <span class="image-text">{{ ecbViolation.issue_date }}</span>
+      </td>
+      <td>
+        <span class="p-column-title">Description</span>
+        <span class="image-text">{{ ecbViolation.violation_description }}</span>
+      </td>
+      <td>
+        <span class="p-column-title">Respondent Name</span>
+        <span class="image-text">{{ ecbViolation.respondent_name }}</span>
+      </td>
+      <td>
+        <button
+          pButton
+          type="button"
+          class="p-button-secondary"
+          icon="pi pi-paypal"
+        ></button>
+      </td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="7">No violations found.</td>
+    </tr>
+  </ng-template>
+</p-table>

@@ -1,0 +1,153 @@
+ 
+<!-- <p-table #dt 
+    [value]="buildings" 
+    [(selection)]="selectedBuildings" 
+    dataKey="id" 
+    [rows]="5" 
+    [showCurrentPageReport]="true" 
+    [rowsPerPageOptions]="[5,10,15,50]" 
+    [loading]="loading"
+    [paginator]="true" 
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} buildings"
+    >
+    <ng-template *ngIf="buildings.length !== 0" pTemplate="caption">
+        <div class="table-header">
+            <span >
+                List of Buildings                      
+            </span>
+        </div>
+    </ng-template>
+
+     <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="building_number">Building Number<p-sortIcon field="BIN"></p-sortIcon></th>
+            <th style="width: 8rem"></th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-building>
+        <tr class="p-selectable-row">
+            <td>
+                <span class="p-column-title">Building Number</span>
+                <span class="image-text">{{building.BIN}}</span>
+            </td>
+            <td >
+                <button pButton type="button" class="p-button-secondary" icon="pi pi-check"></button>
+            
+            </td>
+        </tr>
+    </ng-template>
+    
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="7">No buildings found.</td>
+        </tr>
+    </ng-template>
+</p-table> -->
+
+<!-- <p-card [style]="{'text-align': 'center'}" styleClass="p-card-shadow">
+
+
+	<ng-template pTemplate="header">
+		
+	</ng-template>
+
+
+	<div class="p-fluid p-grid">
+
+		<div class="p-field col-12 p-md-4" >
+			<span class="p-float-label">
+				<input type="text" 
+					id="streetNumber" 
+					pInputText
+					[disabled]='true'
+					[(ngModel)]='this.searchAddress.streetNumber' 
+					[style]="{'margin-bottom': '2em'}"
+				/>
+				<label for="streetNumber">Street Number</label>
+			</span>
+		</div>
+
+		<div class="p-field p-col-12 p-md-4">
+			<span class="p-float-label">
+				<input type="text" 
+					id="streetName" 
+					pInputText 
+					[disabled]='true'
+					[(ngModel)]='this.searchAddress.streetName'
+					[style]="{'margin-bottom': '2em'}"
+				/>
+				<label for="Street Name">Street Name</label>
+			</span>
+		</div>
+
+		<div class="p-field p-col-12 p-md-4">
+			<span class="p-float-label">
+				<input type="text" 
+					id="boro" 
+					pInputText
+					[disabled]='true'
+					[(ngModel)]='this.searchAddress.boro'
+					[style]="{'margin-bottom': '2em'}"
+				/>
+				<label for="boro">Boro</label>
+			</span>
+		</div>
+</div>
+<button type="button" >Search</button>
+
+
+	<ng-template pTemplate="footer">
+		<p-button *ngIf="!customerService.user.hasRegistered && customerService.user.isSignedIn"
+					label="Search" 
+					icon=""
+					(click)="onSearch()"
+					[style]="{'margin': '.5em'}"
+					class="p-button-lg"
+		>
+		</p-button>
+	</ng-template>
+</p-card> -->
+<!-- <form (ngSubmit)="onSubmit($event)" [formGroup]="addressForm">
+.
+.
+.
+
+            <button id="building" type="submit" >search</button>
+            <button id="search" type="submit" >search</button>
+
+
+
+</form>	 -->
+<form [formGroup]="addressForm"  (ngSubmit)="onAdressLookup($event)">
+  <label>
+    Street Number:
+    <input type="text" [formControl]="streetNumber" >
+  </label>
+  <label>
+    Street Name:
+    <input type="text" [formControl]="streetName">
+  </label>
+  <label>
+    Boro:
+    <input type="text" [formControl]="boro">
+  </label>
+  <button type="submit">Submit</button>
+</form>
+
+
+<form [formGroup]="detailForm">
+    <label>
+      BIN:
+      <input type="text" [formControl]="BIN" >
+    </label>
+    <label>
+      BIS Violation:
+      <input type="text" [formControl]="BISViolation">
+    </label>
+  </form>
+
+  {{error}}
+
+
+
