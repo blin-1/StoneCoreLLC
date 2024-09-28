@@ -94,13 +94,13 @@ app.get('/permits', async (req, res) => {
 
 // USE https locally to get google login AND http on heroku deploy
 
-// const httpPort   = process.env.PORT || 8080
-// const httpServer = http.createServer(app)
-// httpServer.listen(httpPort)
-// console.log('http  on ' + httpPort)
+const httpPort   = process.env.PORT || 8080
+const httpServer = http.createServer(app)
+httpServer.listen(httpPort)
+console.log('http  on ' + httpPort)
 
 
-const httpsPort  = process.env.PORT || 8443
-const httpsServer = https.createServer(credentials, app)
-httpsServer.listen(httpsPort)
-console.log('https on ' + httpsPort)
+//const httpsPort  = process.env.PORT || 8443
+//const httpsServer = https.createServer(credentials, app)
+//httpsServer.listen(httpsPort)
+//console.log('https on ' + httpsPort)
